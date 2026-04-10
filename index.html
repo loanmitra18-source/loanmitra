@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoanMitra - Apply Loan</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button:hover {
+  background: darkgreen;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Apply for Loan</h2>
+
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="tel" id="mobile" placeholder="Mobile Number" required>
+  <input type="text" id="city" placeholder="City">
+
+  <select id="employment">
+    <option value="">Select Employment</option>
+    <option>Salaried</option>
+    <option>Self Employed</option>
+  </select>
+
+  <select id="loanType">
+    <option value="">Loan Type</option>
+    <option>Personal Loan</option>
+    <option>Home Loan</option>
+    <option>Business Loan</option>
+    <option>Loan Against Property</option>
+  </select>
+
+  <input type="number" id="income" placeholder="Monthly Income (₹)">
+  <input type="number" id="loanAmount" placeholder="Loan Amount Required">
+  <input type="number" id="emi" placeholder="Current EMI (Optional)">
+
+  <button onclick="sendToWhatsApp()">Apply Now</button>
+</div>
+
+<script>
+function sendToWhatsApp() {
+  var name = document.getElementById("name").value;
+  var mobile = document.getElementById("mobile").value;
+  var city = document.getElementById("city").value;
+  var employment = document.getElementById("employment").value;
+  var loanType = document.getElementById("loanType").value;
+  var income = document.getElementById("income").value;
+  var loanAmount = document.getElementById("loanAmount").value;
+  var emi = document.getElementById("emi").value;
+
+  var message = "Loan Application Details:%0A"
+    + "Name: " + name + "%0A"
+    + "Mobile: " + mobile + "%0A"
+    + "City: " + city + "%0A"
+    + "Employment: " + employment + "%0A"
+    + "Loan Type: " + loanType + "%0A"
+    + "Income: " + income + "%0A"
+    + "Loan Amount: " + loanAmount + "%0A"
+    + "Current EMI: " + emi;
+
+  var phone = "919617649697"; // ✅ Updated Number
+
+  var url = "https://wa.me/" + phone + "?text=" + message;
+
+  window.location.href = url;
+}
+</script>
+
+</body>
+</html>
